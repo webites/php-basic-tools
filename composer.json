@@ -3,6 +3,8 @@
     "description": "PHP Basic Tools for any PHP projects",
     "type": "library",
     "license": "MIT",
+    "keywords": ["routing", "responses", "logger", "request", "session", "view", "router", "http request", "php tools"],
+    "homepage": "https://github.com/webites/php-routing-and-responses",
     "autoload": {
         "psr-4": {
             "BasicTools\\Tool\\": "src/"
@@ -11,8 +13,12 @@
     "authors": [
         {
             "name": "webites",
-            "email": "lgolabek@outlook.com"
+            "email": "lgolabek@outlook.com",
+            "homepage": "https://webites.pl/",
+            "role": "Owner"
         }
     ],
-    "require": {}
+    "require": {
+        "php": ">=8.2"
+    }
 }

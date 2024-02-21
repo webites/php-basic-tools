@@ -32,7 +32,7 @@ class LogToFile extends BasicLog implements LogInterface
             CreateFiles::makeDirectory('logs');
         }
         file_put_contents( 'logs/' . $this->getChannel() . '.log',
-            print_r(date('d/m/y H:i') . ' : ' . $this->getToLog() . PHP_EOL , true),
+            print_r(date('d/m/y H:i') . ' : ' . $this->getType() . ' : ' . $this->getToLog() . PHP_EOL , true),
             FILE_APPEND
         );
     }

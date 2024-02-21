@@ -2,32 +2,37 @@
 
 namespace BasicTools\Tool\Log;
 
+use BasicTools\Tool\FileSystem\CheckFiles;
+use BasicTools\Tool\FileSystem\CreateFiles;
 use BasicTools\Tool\Log\Interfaces\LogInterface;
 class LogToFile extends BasicLog implements LogInterface
 {
 
     public function toLog($to_log)
     {
-        $this->to_log = $to_log;
+        $this->setToLog($to_log);
         return $this;
     }
 
     public function channel($channel)
     {
-        $this->channel = $channel;
+        $this->setChannel( $channel );
         return $this;
     }
 
-    public function setType($type)
+    public function setLogType($type)
     {
-        $this->type = $type;
+        $this->setType( $type );
         return $this;
     }
 
     public function save()
     {
-        file_put_contents( 'logs/' . $this->channel . '.log',
-            print_r(date('d/m/y H:i') . ' : ' . $this->to_log . PHP_EOL , true),
+        if (!CheckFiles::isDirectory('logs')) {
+            CreateFiles::makeDirectory('logs');
+        }
+        file_put_contents( 'logs/' . $this->getChannel() . '.log',
+            print_r(date('d/m/y H:i') . ' : ' . $this->getToLog() . PHP_EOL , true),
             FILE_APPEND
         );
     }
